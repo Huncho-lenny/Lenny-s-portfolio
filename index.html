@@ -11,51 +11,396 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 
       <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="assets/css/style.css">
 
       <title>Lenny - Web Developer Portfolio</title>
    </head>
    <body>
       <!--==================== HEADER ====================-->
       <header class="header" id="header">
-         
+         <nav class="nav container">
+            <a href="#" class="nav__logo">Lenny</a>
+
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list grid">
+                  <li class="nav__item">
+                     <a href="#home" class="nav__link active-link">
+                        <i class="ri-home-5-line"></i> Home
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#about" class="nav__link">
+                        <i class="ri-user-3-line"></i> About
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#projects" class="nav__link">
+                        <i class="ri-briefcase-line"></i> Projects
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#resume" class="nav__link">
+                        <i class="ri-file-list-3-line"></i> Resume
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#contact" class="nav__link">
+                        <i class="ri-chat-3-line"></i> Contact
+                     </a>
+                  </li>
+               </ul>
+
+               <!-- Close button -->
+               <div class="nav__close" id="nav-close">
+                  <i class="ri-close-line"></i>
+               </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+               <i class="ri-menu-4-line"></i>
+            </div>
+         </nav>
       </header>
 
       <!--==================== MAIN ====================-->
       <main class="main">
          <!--==================== HOME ====================-->
          <section class="home section" id="home">
-            
+            <div class="home__container container grid">
+               <div class="home__content">
+                  <div class="home__data">
+                     <h3 class="home__subtitle">Hello, <span>I'm</span></h3>
+                     <h1 class="home__title">Lenny</h1>
+                     <h3 class="home__education">Web Developer</h3>
+                     <p class="home__description">
+                        Passionate web developer creating modern, responsive websites and applications.
+                        I love turning ideas into digital reality.
+                     </p>
+                     <a href="#contact" class="button">
+                        Let's Talk <i class="ri-arrow-right-line"></i>
+                     </a>
+                  </div>
+
+                  <div class="home__social">
+                     <a href="https://github.com/" target="_blank" class="home__social-link">
+                        <i class="ri-github-line"></i>
+                     </a>
+                     <a href="https://linkedin.com/" target="_blank" class="home__social-link">
+                        <i class="ri-linkedin-box-line"></i>
+                     </a>
+                     <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                        <i class="ri-twitter-x-line"></i>
+                     </a>
+                  </div>
+               </div>
+
+               <div class="home__image">
+                  <svg class="home__blob" viewBox="0 0 550 591" xmlns="http://www.w3.org/2000/svg">
+                     <mask id="maskBlob" mask-type="alpha">
+                        <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
+                        170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
+                        447.468 508.583 455.391 501.157 459.678L287 583.322C279.574 587.609 270.426 
+                        587.609 263 583.322L48.843 459.678C41.4174 455.391 36.843 447.468 36.843 
+                        438.894V191.606C36.843 183.032 41.4174 175.109 48.843 170.822L263 47.1782Z"/>
+                     </mask>
+                     <g mask="url(#maskBlob)">
+                        <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
+                        170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
+                        447.468 508.583 455.391 501.157 459.678L287 583.322C279.574 587.609 270.426 
+                        587.609 263 583.322L48.843 459.678C41.4174 455.391 36.843 447.468 36.843 
+                        438.894V191.606C36.843 183.032 41.4174 175.109 48.843 170.822L263 47.1782Z" 
+                        fill="var(--first-color)"/>
+                        <rect x="37" width="476" height="630" fill="url(#pattern0)" fill-opacity="0.4"/>
+                     </g>
+                     <rect x="37" width="476" height="300" fill="url(#pattern1)"/>
+                     <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                           <use href="#image0_1_98" transform="matrix(0.00143057 0 0 0.00108108 0.0404624 0)"/>
+                        </pattern>
+                        <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+                           <use href="#image0_1_98" transform="matrix(0.00143057 0 0 0.00226984 0.0404624 0)"/>
+                        </pattern>
+                        <image id="image0_1_98" width="640" height="640" href="assets/img/profile.png"/>
+                     </defs>
+                  </svg>
+               </div>
+            </div>
          </section>
 
          <!--==================== ABOUT ====================-->
          <section class="about section" id="about">
-            
+            <div class="about__container container grid">
+               <div class="about__data">
+                  <h2 class="section__title">About Me</h2>
+                  <p class="about__description">
+                     I'm a passionate web developer with experience in creating modern, 
+                     responsive websites and web applications. I enjoy working with the latest 
+                     technologies and always strive to write clean, efficient code.
+                  </p>
+                  <a href="assets/pdf/resume.pdf" target="_blank" class="button">
+                     Download CV <i class="ri-download-line"></i>
+                  </a>
+               </div>
+
+               <div class="about__image">
+                  <svg class="about__blob" viewBox="0 0 550 592" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <mask id="maskBorder" mask-type="alpha">
+                        <path d="m263 48.2c7.4-4.3 16.6-4.3 24 0l226.1 130.8c7.4 4.3 12 12.2 12 20.8v261.4c0 8.6-4.6 16.5-12 20.8l-226.1 130.8c-7.4 4.3-16.6 4.3-24 0l-226.1-130.8c-7.4-4.3-12-12.2-12-20.8v-261.4c0-8.6 4.6-16.5 12-20.8z"/>
+                     </mask>
+                     <g mask="url(#maskBorder)">
+                        <rect x="37" width="476" height="630" fill="url(#pattern2)"/>
+                        <path d="m263 48.2c7.4-4.3 16.6-4.3 24 0l226.1 130.8c7.4 4.3 12 12.2 12 20.8v261.4c0 8.6-4.6 16.5-12 20.8l-226.1 130.8c-7.4 4.3-16.6 4.3-24 0l-226.1-130.8c-7.4-4.3-12-12.2-12-20.8v-261.4c0-8.6 4.6-16.5 12-20.8z" stroke="var(--first-color)" stroke-width="6"/>
+                     </g>
+                     <defs>
+                        <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                           <use href="#image1_98" transform="matrix(0.00143057 0 0 0.00108108 0.0404624 0)"/>
+                        </pattern>
+                        <image id="image1_98" width="640" height="640" href="assets/img/about.png"/>
+                     </defs>
+                  </svg>
+               </div>
+            </div>
          </section>
 
          <!--==================== PROJECTS ====================-->
          <section class="projects section" id="projects">
-            
+            <h2 class="section__title">Projects</h2>
+            <div class="projects__container container grid">
+               <article class="projects__card">
+                  <div class="projects__image">
+                     <img src="assets/img/project-1.jpg" alt="project image" class="projects__img">
+                     <a href="#" class="projects__button button">
+                        <i class="ri-arrow-right-up-line"></i>
+                     </a>
+                  </div>
+                  <div class="projects__content">
+                     <h3 class="projects__subtitle">Website</h3>
+                     <h2 class="projects__title">Restaurant Website</h2>
+                     <p class="projects__description">
+                        Modern restaurant website with online reservation system and menu display.
+                     </p>
+                  </div>
+                  <div class="projects__buttons">
+                     <a href="https://github.com/" target="_blank" class="projects__link">
+                        <i class="ri-github-line"></i> View
+                     </a>
+                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
+                        <i class="ri-dribbble-line"></i> View
+                     </a>
+                  </div>
+               </article>
+
+               <article class="projects__card">
+                  <div class="projects__image">
+                     <img src="assets/img/project-2.jpg" alt="project image" class="projects__img">
+                     <a href="#" class="projects__button button">
+                        <i class="ri-arrow-right-up-line"></i>
+                     </a>
+                  </div>
+                  <div class="projects__content">
+                     <h3 class="projects__subtitle">App</h3>
+                     <h2 class="projects__title">Crypto App</h2>
+                     <p class="projects__description">
+                        Cryptocurrency tracking app with real-time prices and portfolio management.
+                     </p>
+                  </div>
+                  <div class="projects__buttons">
+                     <a href="https://github.com/" target="_blank" class="projects__link">
+                        <i class="ri-github-line"></i> View
+                     </a>
+                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
+                        <i class="ri-dribbble-line"></i> View
+                     </a>
+                  </div>
+               </article>
+
+               <article class="projects__card">
+                  <div class="projects__image">
+                     <img src="assets/img/project-3.jpg" alt="project image" class="projects__img">
+                     <a href="#" class="projects__button button">
+                        <i class="ri-arrow-right-up-line"></i>
+                     </a>
+                  </div>
+                  <div class="projects__content">
+                     <h3 class="projects__subtitle">Website</h3>
+                     <h2 class="projects__title">E-commerce Site</h2>
+                     <p class="projects__description">
+                        Full-featured e-commerce website with shopping cart and payment integration.
+                     </p>
+                  </div>
+                  <div class="projects__buttons">
+                     <a href="https://github.com/" target="_blank" class="projects__link">
+                        <i class="ri-github-line"></i> View
+                     </a>
+                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
+                        <i class="ri-dribbble-line"></i> View
+                     </a>
+                  </div>
+               </article>
+            </div>
          </section>
 
          <!--==================== RESUME ====================-->
          <section class="resume section" id="resume">
-            
+            <h2 class="section__title">Resume</h2>
+            <div class="resume__container container grid">
+               <div class="resume__data">
+                  <h3 class="resume__title">Education</h3>
+                  <div class="resume__item">
+                     <h3 class="resume__subtitle">Computer Science</h3>
+                     <span class="resume__date">2020 - 2024</span>
+                     <p class="resume__description">
+                        Bachelor's degree in Computer Science with focus on web development and software engineering.
+                     </p>
+                  </div>
+               </div>
+
+               <div class="resume__data">
+                  <h3 class="resume__title">Experience</h3>
+                  <div class="resume__item">
+                     <h3 class="resume__subtitle">Frontend Developer</h3>
+                     <span class="resume__date">2023 - Present</span>
+                     <p class="resume__description">
+                        Developing responsive web applications using modern frameworks and technologies.
+                     </p>
+                  </div>
+                  <div class="resume__item">
+                     <h3 class="resume__subtitle">Web Developer Intern</h3>
+                     <span class="resume__date">2022 - 2023</span>
+                     <p class="resume__description">
+                        Assisted in building client websites and learned industry best practices.
+                     </p>
+                  </div>
+               </div>
+
+               <div class="resume__data">
+                  <h3 class="resume__title">Skills</h3>
+                  <div class="resume__skills">
+                     <div class="resume__skill">
+                        <h3 class="resume__skill-name">HTML/CSS</h3>
+                        <span class="resume__skill-number">90%</span>
+                        <div class="resume__skill-bar">
+                           <span class="resume__skill-percentage" style="width: 90%"></span>
+                        </div>
+                     </div>
+                     <div class="resume__skill">
+                        <h3 class="resume__skill-name">JavaScript</h3>
+                        <span class="resume__skill-number">85%</span>
+                        <div class="resume__skill-bar">
+                           <span class="resume__skill-percentage" style="width: 85%"></span>
+                        </div>
+                     </div>
+                     <div class="resume__skill">
+                        <h3 class="resume__skill-name">React</h3>
+                        <span class="resume__skill-number">80%</span>
+                        <div class="resume__skill-bar">
+                           <span class="resume__skill-percentage" style="width: 80%"></span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </section>
 
          <!--==================== CONTACT ====================-->
          <section class="contact section" id="contact">
-            
+            <h2 class="section__title">Contact Me</h2>
+            <div class="contact__container container grid">
+               <div class="contact__data">
+                  <h3 class="contact__title">Talk to me</h3>
+                  <div class="contact__info">
+                     <div class="contact__card">
+                        <i class="ri-mail-line contact__card-icon"></i>
+                        <h3 class="contact__card-title">Email</h3>
+                        <span class="contact__card-data">lenny@example.com</span>
+                        <a href="mailto:lenny@example.com" class="contact__button">
+                           Write me <i class="ri-arrow-right-line"></i>
+                        </a>
+                     </div>
+
+                     <div class="contact__card">
+                        <i class="ri-whatsapp-line contact__card-icon"></i>
+                        <h3 class="contact__card-title">WhatsApp</h3>
+                        <span class="contact__card-data">+1 234 567 890</span>
+                        <a href="https://wa.me/1234567890" target="_blank" class="contact__button">
+                           Write me <i class="ri-arrow-right-line"></i>
+                        </a>
+                     </div>
+
+                     <div class="contact__card">
+                        <i class="ri-messenger-line contact__card-icon"></i>
+                        <h3 class="contact__card-title">Messenger</h3>
+                        <span class="contact__card-data">lenny.dev</span>
+                        <a href="https://m.me/lenny.dev" target="_blank" class="contact__button">
+                           Write me <i class="ri-arrow-right-line"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="contact__data">
+                  <h3 class="contact__title">Write me your project</h3>
+                  <form action="" class="contact__form" id="contact-form">
+                     <div class="contact__form-div">
+                        <label class="contact__form-tag">Names</label>
+                        <input type="text" name="user_name" required placeholder="Insert your names" class="contact__form-input" id="contact-name">
+                     </div>
+
+                     <div class="contact__form-div">
+                        <label class="contact__form-tag">Mail</label>
+                        <input type="email" name="user_email" required placeholder="Insert your email" class="contact__form-input" id="contact-email">
+                     </div>
+
+                     <div class="contact__form-div contact__form-area">
+                        <label class="contact__form-tag">Project</label>
+                        <textarea name="user_project" required placeholder="Write your project" class="contact__form-input" id="contact-project"></textarea>
+                     </div>
+
+                     <button type="submit" class="button">
+                        Send Message <i class="ri-send-plane-line"></i>
+                     </button>
+                  </form>
+                  <p class="contact__message" id="contact-message"></p>
+               </div>
+            </div>
          </section>
       </main>
 
       <!--==================== FOOTER ====================-->
       <footer class="footer">
-         
+         <div class="footer__container container grid">
+            <div>
+               <h1 class="footer__title">Lenny</h1>
+               <h2 class="footer__education">Web Developer</h2>
+            </div>
+
+            <div class="footer__social">
+               <a href="https://linkedin.com/" target="_blank" class="footer__social-link">
+                  <i class="ri-linkedin-box-line"></i>
+               </a>
+               <a href="https://github.com/" target="_blank" class="footer__social-link">
+                  <i class="ri-github-line"></i>
+               </a>
+               <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                  <i class="ri-twitter-x-line"></i>
+               </a>
+            </div>
+
+            <span class="footer__copy">
+               &#169; Copyright Lenny. All rights reserved
+            </span>
+         </div>
       </footer>
 
       <!--========== SCROLL UP ==========-->
-      
+      <a href="#" class="scrollup" id="scroll-up">
+         <i class="ri-arrow-up-line"></i>
+      </a>
 
       <!--=============== SCROLLREVEAL ===============-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
