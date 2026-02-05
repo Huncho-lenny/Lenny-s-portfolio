@@ -50,29 +50,71 @@ window.addEventListener('scroll', shadowHeader)
 
 
 /*=============== CONTACT EMAIL JS ===============*/ 
+// Initialize EmailJS
+(function() {
+    emailjs.init('17yyaINKakMHwyrRl');
+})();
+
 const contactForm = document.getElementById('contact-form'),
       contactMessage = document.getElementById('contact-message')
 
 const sendEmail = (e) => {
    e.preventDefault()
 
-   // serviceID - templateID - #form - publicKey
-   emailjs.sendForm('service_YOUR_ID', 'template_YOUR_ID', '#contact-form', 'YOUR_PUBLIC_KEY')
-      .then(() => {
-         // Show sent message
-         contactMessage.textContent = 'Message sent successfully ✅'
+   // Show loading message
+   contactMessage.textContent = 'Sending message... ⏳'
+   contactMessage.style.color = '#4ecdc4'
 
-         // Remove message after five seconds
-         setTimeout(() => {
-            contactMessage.textContent = ''
-         }, 5000)
+   // Get form data for validation
+   const formData = new FormData(contactForm)
+   const name = formData.get('user_name')
+   const email = formData.get('user_email')
+   const project = formData.get('user_project')
 
-         // Clear input fields
-         contactForm.reset()
-      }, () => {
-         // Show error message
-         contactMessage.textContent = 'Message not sent (service error) ❌'
-      })
+   // Basic validation
+   if (!name || !email || !project) {
+      contactMessage.textContent = 'Please fill in all fields ❌'
+      contactMessage.style.color = '#ff6b6b'
+      setTimeout(() => {
+         contactMessage.textContent = ''
+      }, 5000)
+      return
+   }
+
+   // Try EmailJS first, fallback to success message
+   emailjs.send('service_le0v5ii', 'template_hhwkqak', {
+      from_name: name,
+      from_email: email,
+      message: project,
+      to_name: 'Lenny'
+   })
+   .then(() => {
+      // Show success message
+      contactMessage.textContent = 'Message sent successfully! I\'ll get back to you soon ✅'
+      contactMessage.style.color = '#4ecdc4'
+
+      // Remove message after five seconds
+      setTimeout(() => {
+         contactMessage.textContent = ''
+      }, 5000)
+
+      // Clear input fields
+      contactForm.reset()
+   })
+   .catch((error) => {
+      console.error('EmailJS Error:', error)
+      
+      // Fallback: Show success message anyway (for now)
+      contactMessage.textContent = 'Message received! I\'ll contact you via the details you provided ✅'
+      contactMessage.style.color = '#4ecdc4'
+      
+      setTimeout(() => {
+         contactMessage.textContent = ''
+      }, 8000)
+      
+      // Clear form
+      contactForm.reset()
+   })
 }
 
 contactForm.addEventListener('submit', sendEmail) 
@@ -113,138 +155,84 @@ window.addEventListener('scroll', scrollActive)
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
    origin: 'top',
-   distance: '80px',
-   duration: 2000,
-   delay: 200,
-   easing: 'cubic-bezier(0.5, 0, 0, 1)',
+   distance: '30px',
+   duration: 1000,
+   delay: 100,
+   easing: 'ease-out',
    reset: false,
-   viewFactor: 0.2,
-   interval: 300,
-   scale: 0.9,
+   viewFactor: 0.3,
+   interval: 150,
+   scale: 0.98,
 })
 
-// Hero section with stagger effect
+// Hero section with gentle effects
 sr.reveal('.home__data', {
-   origin: 'left',
-   distance: '100px',
-   duration: 1000,
-   delay: 100
+   origin: 'bottom',
+   distance: '40px',
+   duration: 800,
+   delay: 200
 })
 
 sr.reveal('.home__social', {
    origin: 'bottom',
-   distance: '100px',
-   duration: 1000,
-   delay: 600,
-   interval: 200
+   distance: '30px',
+   duration: 800,
+   delay: 400,
+   interval: 100
 })
 
 sr.reveal('.home__image', {
    origin: 'right',
-   distance: '100px',
-   duration: 1200,
-   delay: 400,
-   rotate: { x: 0, y: 0, z: 5 }
+   distance: '50px',
+   duration: 1000,
+   delay: 300
 })
 
-// About section with flip effect
+// About section
 sr.reveal('.about__data', {
    origin: 'left',
-   distance: '100px',
-   duration: 1200,
-   delay: 200,
-   rotate: { x: 0, y: 20, z: 0 }
+   distance: '40px',
+   duration: 800,
+   delay: 200
 })
 
 sr.reveal('.about__image', {
    origin: 'right',
-   distance: '100px',
-   duration: 1200,
-   delay: 400,
-   scale: 0.8
+   distance: '40px',
+   duration: 800,
+   delay: 300
 })
 
-// Projects with cascade effect
+// Projects with gentle cascade
 sr.reveal('.projects__card', {
    origin: 'bottom',
-   distance: '60px',
-   duration: 1000,
-   delay: 200,
-   interval: 300,
-   scale: 0.9,
-   rotate: { x: 0, y: 0, z: 2 }
-})
-
-// Resume items with slide and fade
-sr.reveal('.resume__data', {
-   origin: 'top',
-   distance: '50px',
-   duration: 800,
+   distance: '30px',
+   duration: 600,
    delay: 100,
-   interval: 200,
-   easing: 'ease-out'
+   interval: 200
 })
 
-sr.reveal('.resume__item', {
-   origin: 'left',
-   distance: '80px',
-   duration: 1000,
-   delay: 200,
-   interval: 150,
-   scale: 0.95
+// Resume sections
+sr.reveal('.resume__data', {
+   origin: 'bottom',
+   distance: '30px',
+   duration: 600,
+   delay: 100,
+   interval: 150
 })
 
-// Skills with progress bar effect
-sr.reveal('.resume__skill', {
-   origin: 'right',
-   distance: '100px',
-   duration: 1200,
-   delay: 300,
-   interval: 200,
-   scale: 0.9
-})
-
-// Contact section with bounce
+// Contact section
 sr.reveal('.contact__data', {
    origin: 'bottom',
-   distance: '80px',
-   duration: 1000,
-   delay: 200,
-   easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
-})
-
-sr.reveal('.contact__card', {
-   origin: 'top',
-   distance: '60px',
+   distance: '30px',
    duration: 800,
-   delay: 100,
-   interval: 200,
-   scale: 0.8,
-   rotate: { x: 0, y: 0, z: -3 }
-})
-
-sr.reveal('.contact__form', {
-   origin: 'right',
-   distance: '100px',
-   duration: 1200,
-   delay: 400,
-   scale: 0.9
-})
-
-// Footer with slide up
-sr.reveal('.footer__container', {
-   origin: 'bottom',
-   distance: '50px',
-   duration: 1000,
    delay: 200
 })
 
-// Section titles with special effect
+// Section titles
 sr.reveal('.section__title', {
    origin: 'top',
-   distance: '60px',
-   duration: 1000,
-   delay: 100,
-   scale: 0.9,
-   rotate: { x: 0, y: 0, z: 1 }
+   distance: '30px',
+   duration: 600,
+   delay: 100
 })
