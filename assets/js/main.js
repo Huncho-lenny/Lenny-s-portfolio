@@ -113,15 +113,138 @@ window.addEventListener('scroll', scrollActive)
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
    origin: 'top',
-   distance: '60px',
-   duration: 2500,
-   delay: 400,
-   // reset: true, // Animations repeat
+   distance: '80px',
+   duration: 2000,
+   delay: 200,
+   easing: 'cubic-bezier(0.5, 0, 0, 1)',
+   reset: false,
+   viewFactor: 0.2,
+   interval: 300,
+   scale: 0.9,
 })
 
-sr.reveal('.home__data, .projects__container, .footer__container')
-sr.reveal('.home__image', {delay: 600})
-sr.reveal('.home__social', {delay: 600})
-sr.reveal('.about__data, .contact__data', {origin: 'right'})
-sr.reveal('.about__image, .contact__form', {origin: 'left'})
-sr.reveal('.resume__item', {interval: 100})
+// Hero section with stagger effect
+sr.reveal('.home__data', {
+   origin: 'left',
+   distance: '100px',
+   duration: 1000,
+   delay: 100
+})
+
+sr.reveal('.home__social', {
+   origin: 'bottom',
+   distance: '100px',
+   duration: 1000,
+   delay: 600,
+   interval: 200
+})
+
+sr.reveal('.home__image', {
+   origin: 'right',
+   distance: '100px',
+   duration: 1200,
+   delay: 400,
+   rotate: { x: 0, y: 0, z: 5 }
+})
+
+// About section with flip effect
+sr.reveal('.about__data', {
+   origin: 'left',
+   distance: '100px',
+   duration: 1200,
+   delay: 200,
+   rotate: { x: 0, y: 20, z: 0 }
+})
+
+sr.reveal('.about__image', {
+   origin: 'right',
+   distance: '100px',
+   duration: 1200,
+   delay: 400,
+   scale: 0.8
+})
+
+// Projects with cascade effect
+sr.reveal('.projects__card', {
+   origin: 'bottom',
+   distance: '60px',
+   duration: 1000,
+   delay: 200,
+   interval: 300,
+   scale: 0.9,
+   rotate: { x: 0, y: 0, z: 2 }
+})
+
+// Resume items with slide and fade
+sr.reveal('.resume__data', {
+   origin: 'top',
+   distance: '50px',
+   duration: 800,
+   delay: 100,
+   interval: 200,
+   easing: 'ease-out'
+})
+
+sr.reveal('.resume__item', {
+   origin: 'left',
+   distance: '80px',
+   duration: 1000,
+   delay: 200,
+   interval: 150,
+   scale: 0.95
+})
+
+// Skills with progress bar effect
+sr.reveal('.resume__skill', {
+   origin: 'right',
+   distance: '100px',
+   duration: 1200,
+   delay: 300,
+   interval: 200,
+   scale: 0.9
+})
+
+// Contact section with bounce
+sr.reveal('.contact__data', {
+   origin: 'bottom',
+   distance: '80px',
+   duration: 1000,
+   delay: 200,
+   easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+})
+
+sr.reveal('.contact__card', {
+   origin: 'top',
+   distance: '60px',
+   duration: 800,
+   delay: 100,
+   interval: 200,
+   scale: 0.8,
+   rotate: { x: 0, y: 0, z: -3 }
+})
+
+sr.reveal('.contact__form', {
+   origin: 'right',
+   distance: '100px',
+   duration: 1200,
+   delay: 400,
+   scale: 0.9
+})
+
+// Footer with slide up
+sr.reveal('.footer__container', {
+   origin: 'bottom',
+   distance: '50px',
+   duration: 1000,
+   delay: 200
+})
+
+// Section titles with special effect
+sr.reveal('.section__title', {
+   origin: 'top',
+   distance: '60px',
+   duration: 1000,
+   delay: 100,
+   scale: 0.9,
+   rotate: { x: 0, y: 0, z: 1 }
+})
