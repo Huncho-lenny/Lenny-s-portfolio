@@ -188,7 +188,7 @@ sr.reveal('.home__image', {
    delay: 300
 })
 
-// About section
+// About section with enhanced image animation
 sr.reveal('.about__data', {
    origin: 'left',
    distance: '40px',
