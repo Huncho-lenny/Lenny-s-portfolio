@@ -16,6 +16,14 @@
       <title>Lenny - Web Developer Portfolio</title>
    </head>
    <body>
+      <!--==================== LOADING ANIMATION ====================-->
+      <div class="loading" id="loading">
+         <div class="loading__spinner"></div>
+      </div>
+
+      <!--==================== SCROLL PROGRESS ====================-->
+      <div class="scroll-progress" id="scroll-progress"></div>
+
       <!--==================== HEADER ====================-->
       <header class="header" id="header">
          <nav class="nav container">
@@ -342,9 +350,9 @@
                         <i class="ri-mail-line contact__card-icon"></i>
                         <h3 class="contact__card-title">Email</h3>
                         <span class="contact__card-data">lennykimanthi1@gmail.com</span>
-                        <a href="mailto:lennykimanthi1@gmail.com" class="contact__button">
-                           Write me <i class="ri-arrow-right-line"></i>
-                        </a>
+                        <button class="contact__button copy-email" data-email="lennykimanthi1@gmail.com">
+                           Copy Email <i class="ri-file-copy-line"></i>
+                        </button>
                      </div>
 
                      <div class="contact__card">

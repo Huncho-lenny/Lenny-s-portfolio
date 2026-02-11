@@ -1,3 +1,68 @@
+/*=============== LOADING ANIMATION ===============*/
+window.addEventListener('load', () => {
+   const loading = document.getElementById('loading')
+   loading.classList.add('hide')
+   setTimeout(() => {
+      loading.style.display = 'none'
+   }, 500)
+})
+
+/*=============== SCROLL PROGRESS ===============*/
+const scrollProgress = () => {
+   const scrollProgress = document.getElementById('scroll-progress')
+   const scrollTop = document.documentElement.scrollTop
+   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+   const scrollPercentage = (scrollTop / scrollHeight) * 100
+   scrollProgress.style.width = scrollPercentage + '%'
+}
+window.addEventListener('scroll', scrollProgress)
+
+/*=============== COPY EMAIL ===============*/
+const copyEmailBtn = document.querySelector('.copy-email')
+if(copyEmailBtn) {
+   copyEmailBtn.addEventListener('click', () => {
+      const email = copyEmailBtn.getAttribute('data-email')
+      navigator.clipboard.writeText(email).then(() => {
+         const originalText = copyEmailBtn.innerHTML
+         copyEmailBtn.innerHTML = 'Copied! <i class="ri-check-line"></i>'
+         copyEmailBtn.classList.add('copied')
+         
+         setTimeout(() => {
+            copyEmailBtn.innerHTML = originalText
+            copyEmailBtn.classList.remove('copied')
+         }, 2000)
+      })
+   })
+}
+
+/*=============== ANIMATED SKILL BARS ===============*/
+const animateSkillBars = () => {
+   const skillBars = document.querySelectorAll('.resume__skill-percentage')
+   const resumeSection = document.getElementById('resume')
+   
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+         if(entry.isIntersecting) {
+            skillBars.forEach(bar => {
+               const width = bar.style.width
+               bar.style.setProperty('--skill-width', width)
+               bar.style.width = '0%'
+               setTimeout(() => {
+                  bar.classList.add('animate')
+               }, 200)
+            })
+            observer.unobserve(entry.target)
+         }
+      })
+   }, { threshold: 0.5 })
+   
+   if(resumeSection) {
+      observer.observe(resumeSection)
+   }
+}
+
+animateSkillBars()
+
 /*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),

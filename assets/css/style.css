@@ -1,3 +1,49 @@
+/*=============== LOADING ANIMATION ===============*/
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--body-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading__spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--container-color);
+  border-top: 3px solid var(--first-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*=============== SCROLL PROGRESS ===============*/
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--first-color), var(--first-color-alt));
+  z-index: var(--z-fixed);
+  transition: width 0.1s ease;
+}
+
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 
@@ -276,6 +322,26 @@ p, span, h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, hsla(var(--hue), 100%, 40%, .1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, hsla(var(--hue), 100%, 40%, .1) 0%, transparent 50%);
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 .home__container {
@@ -428,6 +494,12 @@ p, span, h1, h2, h3, h4, h5, h6 {
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects__card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px hsla(var(--hue), 100%, 40%, .15);
 }
 
 .projects__image {
@@ -583,6 +655,12 @@ p, span, h1, h2, h3, h4, h5, h6 {
 .resume__skill-percentage {
   display: block;
   background-color: var(--first-color);
+  width: 0%;
+  transition: width 2s ease-in-out;
+}
+
+.resume__skill-percentage.animate {
+  width: var(--skill-width) !important;
 }
 
 
@@ -689,6 +767,36 @@ p, span, h1, h2, h3, h4, h5, h6 {
 
 .contact__button:hover i {
   transform: translateX(.25rem);
+}
+
+.copy-email {
+  background: none;
+  border: none;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .25rem;
+  cursor: pointer;
+  transition: color .4s;
+}
+
+.copy-email:hover {
+  color: var(--first-color-alt);
+}
+
+.copy-email.copied {
+  color: #4ecdc4;
+}
+
+.copy-email.copied i {
+  animation: checkmark 0.6s ease;
+}
+
+@keyframes checkmark {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 .contact__form-div {
