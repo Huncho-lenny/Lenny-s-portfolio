@@ -404,10 +404,10 @@ p, span, h1, h2, h3, h4, h5, h6 {
 
 .about__blob {
   width: 320px;
-}
-
-.about__blob path {
-  stroke: var(--first-color);
+  height: 320px;
+  fill: var(--first-color);
+  filter: drop-shadow(0 12px 12px hsla(var(--hue), 100%, 40%, .2));
+  flex-shrink: 0;
 }
 
 
