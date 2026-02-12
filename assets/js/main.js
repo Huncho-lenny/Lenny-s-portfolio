@@ -305,124 +305,181 @@ sr.reveal('.section__title', {
 /*=============== INTERACTIVE DEMOS ===============*/
 // Weather App
 async function getWeather() {
-   const city = document.getElementById('cityInput').value
-   const result = document.getElementById('weatherResult')
-   
-   if (!city) {
-      result.innerHTML = '<p>Please enter a city name</p>'
-      return
-   }
+    const cityInput = document.getElementById('cityInput');
+    const result = document.getElementById('weatherResult');
+    
+    if (!cityInput || !result) return;
+    
+    const city = cityInput.value.trim();
+    
+    if (!city) {
+        result.innerHTML = '<p>Please enter a city name</p>';
+        return;
+    }
 
-   result.innerHTML = '<p>Loading...</p>'
+    result.innerHTML = '<p>Loading...</p>';
 
-   try {
-      const apiKey = 'eb4c9f3e0b60427f4f6e0d2635d4ab1d' // Replace with actual API key
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-      
-      if (!response.ok) throw new Error('City not found')
-      
-      const data = await response.json()
-      result.innerHTML = `
-         <h4>${data.name}, ${data.sys.country}</h4>
-         <div class="weather__temp">${Math.round(data.main.temp)}°C</div>
-         <p>${data.weather[0].description}</p>
-         <p>Humidity: ${data.main.humidity}%</p>
-      `
-   } catch (error) {
-      result.innerHTML = `<p>Demo mode: For full functionality, add OpenWeatherMap API key</p>
-                         <p>Example: ${city} - 22°C, Partly Cloudy</p>`
-   }
+    try {
+        const response = await fetch(`https://wttr.in/${city}?format=j1`);
+        
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        
+        const data = await response.json();
+        const current = data.current_condition[0];
+        const location = data.nearest_area[0];
+        
+        result.innerHTML = `
+            <h4>${location.areaName[0].value}, ${location.country[0].value}</h4>
+            <div class="weather__temp">${current.temp_C}°C</div>
+            <p style="text-transform: capitalize;">${current.weatherDesc[0].value}</p>
+            <p>Feels like: ${current.FeelsLikeC}°C</p>
+            <p>Humidity: ${current.humidity}%</p>
+            <p>Wind Speed: ${current.windspeedKmph} km/h</p>
+        `;
+    } catch (error) {
+        result.innerHTML = `<p style="color: #ef4444;">City not found. Please try again.</p>`;
+    }
 }
 
 // Todo List
-let todos = JSON.parse(localStorage.getItem('todos')) || []
+let demoTodos = [];
 
-function renderTodos() {
-   const list = document.getElementById('todoList')
-   if (!list) return
-   
-   list.innerHTML = todos.map((todo, index) => `
-      <div class="todo__item ${todo.completed ? 'completed' : ''}">
-         <input type="checkbox" ${todo.completed ? 'checked' : ''} 
-                onchange="toggleTodo(${index})">
-         <span>${todo.text}</span>
-         <button class="todo__delete" onclick="deleteTodo(${index})">Delete</button>
-      </div>
-   `).join('')
+function loadDemoTodos() {
+    const savedTodos = localStorage.getItem('portfolioTodos');
+    if (savedTodos) {
+        try {
+            demoTodos = JSON.parse(savedTodos);
+        } catch (e) {
+            demoTodos = [];
+        }
+    }
+    renderDemoTodos();
+}
+
+function saveDemoTodos() {
+    localStorage.setItem('portfolioTodos', JSON.stringify(demoTodos));
+}
+
+function renderDemoTodos() {
+    const list = document.getElementById('todoList');
+    if (!list) return;
+    
+    if (demoTodos.length === 0) {
+        list.innerHTML = '<p style="text-align: center; color: var(--text-color-light); padding: 1rem;">No tasks yet. Add one above!</p>';
+        return;
+    }
+    
+    list.innerHTML = demoTodos.map((todo, index) => `
+        <div class="todo__item ${todo.completed ? 'completed' : ''}">
+            <input type="checkbox" ${todo.completed ? 'checked' : ''} 
+                   onchange="toggleDemoTodo(${index})">
+            <span>${todo.text}</span>
+            <button class="todo__delete" onclick="deleteDemoTodo(${index})">Delete</button>
+        </div>
+    `).join('');
 }
 
 function addTodo() {
-   const input = document.getElementById('todoInput')
-   if (!input) return
-   
-   const text = input.value.trim()
-   
-   if (text) {
-      todos.push({ text, completed: false })
-      localStorage.setItem('todos', JSON.stringify(todos))
-      input.value = ''
-      renderTodos()
-   }
+    const input = document.getElementById('todoInput');
+    if (!input) return;
+    
+    const text = input.value.trim();
+    
+    if (text) {
+        demoTodos.push({ text, completed: false });
+        saveDemoTodos();
+        input.value = '';
+        renderDemoTodos();
+    }
 }
 
-function toggleTodo(index) {
-   todos[index].completed = !todos[index].completed
-   localStorage.setItem('todos', JSON.stringify(todos))
-   renderTodos()
+function toggleDemoTodo(index) {
+    if (demoTodos[index]) {
+        demoTodos[index].completed = !demoTodos[index].completed;
+        saveDemoTodos();
+        renderDemoTodos();
+    }
 }
 
-function deleteTodo(index) {
-   todos.splice(index, 1)
-   localStorage.setItem('todos', JSON.stringify(todos))
-   renderTodos()
+function deleteDemoTodo(index) {
+    demoTodos.splice(index, 1);
+    saveDemoTodos();
+    renderDemoTodos();
 }
 
 // Color Generator
 function generateRandomColor() {
-   return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')
+    return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
 }
 
 function generateColors() {
-   const grid = document.getElementById('colorsGrid')
-   if (!grid) return
-   
-   const colors = Array.from({length: 5}, generateRandomColor)
-   
-   grid.innerHTML = colors.map(color => `
-      <div class="color__box" style="background-color: ${color}" onclick="copyColor('${color}')">
-         <div class="color__code">${color}</div>
-      </div>
-   `).join('')
+    const grid = document.getElementById('colorsGrid');
+    if (!grid) return;
+    
+    const colors = Array.from({length: 5}, generateRandomColor);
+    
+    grid.innerHTML = colors.map(color => `
+        <div class="color__box" style="background-color: ${color}" onclick="copyColor('${color}')">
+            <div class="color__code">${color}</div>
+        </div>
+    `).join('');
 }
 
 function copyColor(color) {
-   navigator.clipboard.writeText(color)
-   const notification = document.getElementById('copyNotification')
-   if (notification) {
-      notification.textContent = `Copied ${color}!`
-      notification.classList.add('show')
-      setTimeout(() => notification.classList.remove('show'), 2000)
-   }
+    navigator.clipboard.writeText(color).then(() => {
+        const notification = document.getElementById('copyNotification');
+        if (notification) {
+            notification.textContent = `Copied ${color}!`;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 2000);
+        }
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
 }
 
 // Initialize demos when page loads
-window.addEventListener('load', () => {
-   renderTodos()
-   generateColors()
-   
-   // Add enter key listeners
-   const cityInput = document.getElementById('cityInput')
-   const todoInput = document.getElementById('todoInput')
-   
-   if (cityInput) {
-      cityInput.addEventListener('keypress', (e) => {
-         if (e.key === 'Enter') getWeather()
-      })
-   }
-   
-   if (todoInput) {
-      todoInput.addEventListener('keypress', (e) => {
-         if (e.key === 'Enter') addTodo()
-      })
-   }
-})
+function initializeDemos() {
+    // Weather enter key
+    const cityInput = document.getElementById('cityInput');
+    const weatherBtn = document.getElementById('weatherBtn');
+    if (cityInput) {
+        cityInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getWeather();
+        });
+    }
+    if (weatherBtn) {
+        weatherBtn.addEventListener('click', getWeather);
+    }
+
+    // Todo enter key and button
+    const todoInput = document.getElementById('todoInput');
+    const addTodoBtn = document.getElementById('addTodoBtn');
+    if (todoInput) {
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTodo();
+        });
+    }
+    if (addTodoBtn) {
+        addTodoBtn.addEventListener('click', addTodo);
+    }
+
+    // Color generator button
+    const generateColorsBtn = document.getElementById('generateColorsBtn');
+    if (generateColorsBtn) {
+        generateColorsBtn.addEventListener('click', generateColors);
+    }
+
+    // Load todos and generate initial colors
+    loadDemoTodos();
+    generateColors();
+}
+
+// Call initialization
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDemos);
+} else {
+    initializeDemos();
+}
