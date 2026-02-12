@@ -194,79 +194,163 @@
 
          <!--==================== PROJECTS ====================-->
          <section class="projects section" id="projects">
-            <h2 class="section__title">Projects</h2>
-            <div class="projects__container container grid">
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/project-1.jpg" alt="project image" class="projects__img">
-                     <a href="#" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
+            <h2 class="section__title">Projects & Demos</h2>
+            
+            <div class="container">
+               <!-- Featured Project: Social Vault -->
+               <div class="featured__project">
+                  <div class="featured__header">
+                     <span class="featured__badge">🚧 In Development</span>
                   </div>
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Website</h3>
-                     <h2 class="projects__title">Restaurant Website</h2>
-                     <p class="projects__description">
-                        Modern restaurant website with online reservation system and menu display.
-                     </p>
+                  <div class="featured__content">
+                     <div class="featured__info">
+                        <h2>The Social Vault</h2>
+                        <p class="featured__description">
+                           A full-stack social media platform built from the ground up. This project showcases modern web development practices with a clean, scalable architecture designed to grow over time.
+                        </p>
+                        <div class="featured__highlights">
+                           <div class="highlight__item">
+                              <i class="ri-code-s-slash-line"></i>
+                              <span>Full-stack development with Flask & React</span>
+                           </div>
+                           <div class="highlight__item">
+                              <i class="ri-database-2-line"></i>
+                              <span>PostgreSQL database with SQLAlchemy ORM</span>
+                           </div>
+                           <div class="highlight__item">
+                              <i class="ri-lock-line"></i>
+                              <span>JWT authentication & user management</span>
+                           </div>
+                           <div class="highlight__item">
+                              <i class="ri-layout-line"></i>
+                              <span>RESTful API design & modern UI/UX</span>
+                           </div>
+                        </div>
+                        <div class="projects__tech">
+                           <span class="tech__tag">Python</span>
+                           <span class="tech__tag">Flask</span>
+                           <span class="tech__tag">React</span>
+                           <span class="tech__tag">PostgreSQL</span>
+                           <span class="tech__tag">SQLAlchemy</span>
+                           <span class="tech__tag">JWT</span>
+                           <span class="tech__tag">Tailwind CSS</span>
+                        </div>
+                        <div class="projects__buttons">
+                           <a href="https://github.com/Huncho-lenny/social-vault" target="_blank" class="projects__link">
+                              <i class="ri-github-line"></i> View Repository
+                           </a>
+                        </div>
+                     </div>
                   </div>
-                  <div class="projects__buttons">
-                     <a href="https://github.com/" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i> View
-                     </a>
-                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
-                        <i class="ri-dribbble-line"></i> View
-                     </a>
-                  </div>
-               </article>
+               </div>
 
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/project-2.jpg" alt="project image" class="projects__img">
-                     <a href="#" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-                  </div>
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">App</h3>
-                     <h2 class="projects__title">Crypto App</h2>
-                     <p class="projects__description">
-                        Cryptocurrency tracking app with real-time prices and portfolio management.
-                     </p>
-                  </div>
-                  <div class="projects__buttons">
-                     <a href="https://github.com/" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i> View
-                     </a>
-                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
-                        <i class="ri-dribbble-line"></i> View
-                     </a>
-                  </div>
-               </article>
+               <!-- Completed Projects -->
+               <div class="projects__container container grid">
+                  <!-- Cocktail Finder -->
+                  <article class="projects__card">
+                     <div class="projects__image">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500" alt="cocktail finder" class="projects__img">
+                        <span class="projects__badge">Solo Project</span>
+                     </div>
+                     <div class="projects__content">
+                        <h3>Web App</h3>
+                        <h2 class="projects__title">Cocktail Finder</h2>
+                        <p class="projects__description">
+                           Interactive web app that displays a collection of cocktail recipes. Users can browse through the gallery, view details, and interact with the UI to get recipes for their desired cocktails.
+                        </p>
+                        <div class="projects__tech">
+                           <span class="tech__tag">HTML5</span>
+                           <span class="tech__tag">CSS3</span>
+                           <span class="tech__tag">JavaScript</span>
+                        </div>
+                     </div>
+                     <div class="projects__buttons">
+                        <a href="https://github.com/Huncho-lenny/cocktail-finder-app" target="_blank" class="projects__link">
+                           <i class="ri-github-line"></i> GitHub
+                        </a>
+                        <a href="https://cocktail-finder-app.vercel.app" target="_blank" class="projects__link">
+                           <i class="ri-external-link-line"></i> Live Demo
+                        </a>
+                     </div>
+                  </article>
 
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/project-3.jpg" alt="project image" class="projects__img">
-                     <a href="#" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
+                  <!-- Taste Town -->
+                  <article class="projects__card">
+                     <div class="projects__image">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="taste town" class="projects__img">
+                        <span class="projects__badge">Team Project</span>
+                     </div>
+                     <div class="projects__content">
+                        <h3>E-Commerce</h3>
+                        <h2 class="projects__title">Taste Town</h2>
+                        <p class="projects__description">
+                           Online e-commerce supermarket built with React. Features product browsing, category filtering, and an admin panel for managing the product catalog. I contributed to backend integration and CRUD operations.
+                        </p>
+                        <div class="projects__tech">
+                           <span class="tech__tag">React</span>
+                           <span class="tech__tag">React Router</span>
+                           <span class="tech__tag">React Hooks</span>
+                           <span class="tech__tag">CSS</span>
+                        </div>
+                     </div>
+                     <div class="projects__buttons">
+                        <a href="https://github.com/Richard3wasonga/Taste-Town/tree/Huncho-lenny-patch-1" target="_blank" class="projects__link">
+                           <i class="ri-github-line"></i> GitHub
+                        </a>
+                        <a href="https://taste-town-five.vercel.app/" target="_blank" class="projects__link">
+                           <i class="ri-external-link-line"></i> Live Demo
+                        </a>
+                     </div>
+                  </article>
+               </div>
+
+               <!-- Interactive Demos -->
+               <h3 class="demos__title">Interactive Demos</h3>
+               <div class="projects__container container grid">
+                  <!-- Weather App Demo -->
+                  <div class="demo__card">
+                     <div class="demo__header">
+                        <h3>🌤️ Weather App</h3>
+                     </div>
+                     <div class="demo__interactive">
+                        <div class="weather__input">
+                           <input type="text" id="cityInput" placeholder="Enter city name...">
+                           <button onclick="getWeather()">Search</button>
+                        </div>
+                        <div id="weatherResult" class="weather__result">
+                           <p>Enter a city to see the weather</p>
+                        </div>
+                     </div>
+                     <p class="projects__description">Real-time weather data using OpenWeatherMap API</p>
                   </div>
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Website</h3>
-                     <h2 class="projects__title">E-commerce Site</h2>
-                     <p class="projects__description">
-                        Full-featured e-commerce website with shopping cart and payment integration.
-                     </p>
+
+                  <!-- Todo List Demo -->
+                  <div class="demo__card">
+                     <div class="demo__header">
+                        <h3>✅ Todo List</h3>
+                     </div>
+                     <div class="demo__interactive">
+                        <div class="todo__input">
+                           <input type="text" id="todoInput" placeholder="Add a new task...">
+                           <button onclick="addTodo()">Add</button>
+                        </div>
+                        <div id="todoList" class="todo__list"></div>
+                     </div>
+                     <p class="projects__description">Task management with local storage persistence</p>
                   </div>
-                  <div class="projects__buttons">
-                     <a href="https://github.com/" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i> View
-                     </a>
-                     <a href="https://dribbble.com/" target="_blank" class="projects__link">
-                        <i class="ri-dribbble-line"></i> View
-                     </a>
+
+                  <!-- Color Generator Demo -->
+                  <div class="demo__card">
+                     <div class="demo__header">
+                        <h3>🎨 Color Palette</h3>
+                     </div>
+                     <div class="demo__interactive">
+                        <div class="colors__grid" id="colorsGrid"></div>
+                        <button class="generate__btn" onclick="generateColors()">Generate New Palette</button>
+                     </div>
+                     <p class="projects__description">Random color scheme generator - click colors to copy</p>
                   </div>
-               </article>
+               </div>
             </div>
          </section>
 
@@ -436,6 +520,11 @@
       <a href="#" class="scrollup" id="scroll-up">
          <i class="ri-arrow-up-line"></i>
       </a>
+
+      <!--========== COPY NOTIFICATION ==========-->
+      <div class="copy__notification" id="copyNotification">
+         Copied to clipboard!
+      </div>
 
       <!--=============== SCROLLREVEAL ===============-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>

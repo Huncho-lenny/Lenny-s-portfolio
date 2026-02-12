@@ -483,6 +483,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   padding-top: 1rem;
   width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .projects__card {
@@ -520,6 +521,18 @@ p, span, h1, h2, h3, h4, h5, h6 {
   transform: scale(1.05);
 }
 
+.projects__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255,255,255,0.95);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--first-color);
+}
+
 .projects__button {
   position: absolute;
   top: 1rem;
@@ -547,6 +560,13 @@ p, span, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 
+.projects__content h3 {
+  font-size: 0.875rem;
+  color: var(--first-color);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
 .projects__subtitle {
   color: var(--first-color);
   font-size: var(--small-font-size);
@@ -564,6 +584,22 @@ p, span, h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
   margin-bottom: 1rem;
   flex-grow: 1;
+}
+
+.projects__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech__tag {
+  background-color: hsl(var(--hue), 80%, 95%);
+  color: var(--first-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .projects__buttons {
@@ -585,6 +621,269 @@ p, span, h1, h2, h3, h4, h5, h6 {
 
 .projects__link:hover {
   color: var(--first-color-alt);
+}
+
+/* Featured Project */
+.featured__project {
+  background: linear-gradient(135deg, hsla(var(--hue), 80%, 48%, 0.1), hsla(var(--hue), 80%, 48%, 0.05));
+  border: 2px solid var(--first-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+.featured__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.featured__badge {
+  background-color: var(--first-color);
+  color: var(--black-color);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.featured__content {
+  display: grid;
+  gap: 2rem;
+}
+
+.featured__info h2 {
+  font-size: 1.75rem;
+  color: var(--white-color);
+  margin-bottom: 1rem;
+}
+
+.featured__description {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.featured__highlights {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.highlight__item i {
+  color: var(--first-color);
+  font-size: 1.25rem;
+}
+
+/* Interactive Demos */
+.demos__title {
+  font-size: 1.5rem;
+  color: var(--first-color);
+  text-align: center;
+  margin: 4rem 0 2rem;
+}
+
+.demo__card {
+  background-color: var(--container-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px hsla(var(--hue), 100%, 40%, .1);
+}
+
+.demo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.demo__header h3 {
+  font-size: 1.25rem;
+  color: var(--white-color);
+}
+
+.demo__interactive {
+  background-color: var(--body-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Weather Demo */
+.weather__input,
+.todo__input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: stretch;
+}
+
+.weather__input input,
+.todo__input input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid var(--gray-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  background-color: var(--container-color);
+  color: var(--white-color);
+  min-width: 0;
+}
+
+.weather__input button,
+.todo__input button {
+  padding: 0.75rem 1rem;
+  background-color: var(--first-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.weather__input button:hover,
+.todo__input button:hover {
+  background-color: var(--first-color-alt);
+}
+
+.weather__result {
+  text-align: center;
+  padding: 1rem;
+  color: var(--white-color);
+}
+
+.weather__temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  color: var(--first-color);
+}
+
+
+
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: var(--container-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.todo__item.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo__item input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.todo__item span {
+  flex: 1;
+  color: var(--white-color);
+}
+
+.todo__delete {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+/* Color Generator Demo */
+.colors__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.color__box {
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 8px hsla(var(--hue), 100%, 40%, .1);
+}
+
+.color__box:hover {
+  transform: scale(1.05);
+}
+
+.color__code {
+  background-color: rgba(255,255,255,0.9);
+  color: var(--black-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.generate__btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--first-color);
+  color: var(--black-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: var(--font-medium);
+  transition: background-color 0.3s;
+}
+
+.generate__btn:hover {
+  background-color: var(--first-color-alt);
+}
+
+.copy__notification {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: #10b981;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.copy__notification.show {
+  opacity: 1;
 }
 
 
