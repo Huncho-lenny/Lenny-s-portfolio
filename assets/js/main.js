@@ -69,31 +69,42 @@ document.addEventListener('DOMContentLoaded', function() {
    
    animateSkillBars()
    
-   /*=============== MOBILE MENU FIX ===============*/
+   /*=============== MOBILE MENU (open/close) ===============*/
    const navMenu = document.getElementById('nav-menu')
    const navToggle = document.getElementById('nav-toggle')
    const navClose = document.getElementById('nav-close')
    const navLinks = document.querySelectorAll('.nav__link')
 
-   /* Show menu */
-   if (navToggle) {
-      navToggle.addEventListener('click', () => {
+   function openMenu() {
+      if (navMenu) {
          navMenu.classList.add('show-menu')
-      })
+         document.body.classList.add('menu-open')
+      }
    }
 
-   /* Hide menu when X is clicked */
+   function closeMenu() {
+      if (navMenu) {
+         navMenu.classList.remove('show-menu')
+         document.body.classList.remove('menu-open')
+      }
+   }
+
+   function toggleMenu() {
+      if (!navMenu) return
+      navMenu.classList.toggle('show-menu')
+      document.body.classList.toggle('menu-open', navMenu.classList.contains('show-menu'))
+   }
+
+   if (navToggle) {
+      navToggle.addEventListener('click', toggleMenu)
+   }
+
    if (navClose) {
-      navClose.addEventListener('click', () => {
-         navMenu.classList.remove('show-menu')
-      })
+      navClose.addEventListener('click', closeMenu)
    }
 
-   /* Hide menu when any nav link is clicked */
    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-         navMenu.classList.remove('show-menu')
-      })
+      link.addEventListener('click', closeMenu)
    })
    
    /*=============== HOME TYPED JS ===============*/
