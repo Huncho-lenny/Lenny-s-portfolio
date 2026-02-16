@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
    
    /*=============== INTERACTIVE DEMOS ===============*/
+   // Weather App - FIXED VERSION (Open-Meteo: geocode city → fetch weather)
    async function getWeather() {
        const cityInput = document.getElementById('cityInput');
        const result = document.getElementById('weatherResult');
@@ -311,30 +312,60 @@ document.addEventListener('DOMContentLoaded', function() {
            result.innerHTML = '<p>Please enter a city name</p>';
            return;
        }
-   
+
        result.innerHTML = '<p>Loading...</p>';
-   
+
        try {
-           const response = await fetch(`https://wttr.in/${city}?format=j1`);
+           // Using Open-Meteo (free, no API key needed)
+           const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`);
+           const geoData = await geoResponse.json();
            
-           if (!response.ok) {
+           if (!geoData.results || geoData.results.length === 0) {
                throw new Error('City not found');
            }
            
-           const data = await response.json();
-           const current = data.current_condition[0];
-           const location = data.nearest_area[0];
+           const { latitude, longitude, name, country } = geoData.results[0];
+           
+           const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&temperature_unit=celsius`);
+           const weatherData = await weatherResponse.json();
+           
+           const current = weatherData.current;
+           const weatherCodes = {
+               0: 'Clear sky',
+               1: 'Mainly clear',
+               2: 'Partly cloudy',
+               3: 'Overcast',
+               45: 'Foggy',
+               48: 'Foggy',
+               51: 'Light drizzle',
+               53: 'Moderate drizzle',
+               55: 'Dense drizzle',
+               61: 'Slight rain',
+               63: 'Moderate rain',
+               65: 'Heavy rain',
+               71: 'Slight snow',
+               73: 'Moderate snow',
+               75: 'Heavy snow',
+               80: 'Rain showers',
+               81: 'Rain showers',
+               82: 'Violent rain showers',
+               95: 'Thunderstorm',
+               96: 'Thunderstorm with hail',
+               99: 'Thunderstorm with hail'
+           };
+           
+           const description = weatherCodes[current.weather_code] || 'Unknown';
            
            result.innerHTML = `
-               <h4>${location.areaName[0].value}, ${location.country[0].value}</h4>
-               <div class="weather__temp">${current.temp_C}°C</div>
-               <p style="text-transform: capitalize;">${current.weatherDesc[0].value}</p>
-               <p>Feels like: ${current.FeelsLikeC}°C</p>
-               <p>Humidity: ${current.humidity}%</p>
-               <p>Wind Speed: ${current.windspeedKmph} km/h</p>
+               <h4>${name}, ${country}</h4>
+               <div class="weather__temp">${Math.round(current.temperature_2m)}°C</div>
+               <p style="text-transform: capitalize;">${description}</p>
+               <p>Humidity: ${current.relative_humidity_2m}%</p>
+               <p>Wind Speed: ${Math.round(current.wind_speed_10m)} km/h</p>
            `;
        } catch (error) {
-           result.innerHTML = `<p style="color: #ef4444;">City not found. Please try again.</p>`;
+           console.error('Weather error:', error);
+           result.innerHTML = `<p style="color: #ef4444;">City not found. Try another city name.</p>`;
        }
    }
    
