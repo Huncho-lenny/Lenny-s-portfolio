@@ -1,3 +1,6 @@
+/*=============== DESKTOP/WEB UI ===============*/
+/* Mobile UI is in mobile.css */
+
 /*=============== LOADING ANIMATION ===============*/
 .loading {
   position: fixed;
@@ -84,6 +87,7 @@
   --h3-font-size: 1rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
 
   /*========== Font weight ==========*/
   --font-light: 300;
@@ -134,6 +138,7 @@ body {
   min-height: 100vh;
   position: relative;
 }
+
 
 button {
   outline: none;
@@ -592,6 +597,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
+
 
 .tech__tag {
   background-color: hsl(var(--hue), 80%, 95%);
@@ -1237,35 +1243,8 @@ p, span, h1, h2, h3, h4, h5, h6 {
 }
 
 
-/*=============== BREAKPOINTS ===============*/
-/* For small devices */
-@media screen and (max-width: 320px) {
-  .container {
-    margin-inline: 1rem;
-  }
-
-  .home__image {
-    width: 180px;
-  }
-
-  .about__image {
-    width: 180px;
-  }
-
-  .projects__container {
-    grid-template-columns: max-content;
-    justify-content: center;
-  }
-
-  .resume__container {
-    grid-template-columns: 1fr;
-  }
-
-  .resume__container .resume__data:nth-child(1),
-  .resume__container .resume__data:nth-child(2) {
-    grid-column: 1;
-  }
-}
+/*=============== BREAKPOINTS (Web / Desktop) ===============*/
+/* Mobile breakpoints live in mobile.css */
 
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -1276,11 +1255,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
   }
 
-  .contact__data {
-    grid-template-columns: 300px 360px;
-    justify-content: center;
-    column-gap: 1rem;
-  }
+  /* Contact stays single column until 1150px to avoid overflow on tablets */
 }
 
 @media screen and (min-width: 768px) {
