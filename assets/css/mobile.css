@@ -10,25 +10,45 @@ Desktop/web UI is in style.css
   width: 100%;
 }
 
-/*=============== NAVIGATION ===============*/
+/*=============== MOBILE NAVIGATION ===============*/
 .nav__logo {
   font-size: 1rem;
 }
 
+.nav__toggle {
+  display: block !important;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--white-color);
+  z-index: 101;
+}
+
+.nav__close {
+  display: block !important;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--white-color);
+  z-index: 101;
+}
+
 .nav__menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  background-color: var(--container-color);
-  width: 80%;
-  height: 100%;
-  padding: 6rem 3rem 3.5rem;
-  transition: right 0.4s;
-  box-shadow: -2px 0 12px rgba(0,0,0,0.1);
+  position: fixed !important;
+  top: 0 !important;
+  right: -100% !important;
+  background-color: var(--container-color) !important;
+  width: 80% !important;
+  height: 100vh !important;
+  padding: 6rem 3rem 3.5rem !important;
+  transition: right 0.4s !important;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.3) !important;
+  z-index: 100 !important;
 }
 
 .nav__menu.show-menu {
-  right: 0;
+  right: 0 !important;
 }
 
 .nav__list {
@@ -39,6 +59,10 @@ Desktop/web UI is in style.css
 
 .nav__link {
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .5rem;
 }
 
 /*=============== HOME SECTION ===============*/
@@ -170,7 +194,7 @@ Desktop/web UI is in style.css
   margin: 0 1rem 2rem;
 }
 
-.featured__title {
+.featured__info h2 {
   font-size: 1.5rem;
 }
 
