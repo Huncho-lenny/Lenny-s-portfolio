@@ -506,3 +506,13 @@ body.menu-open {
       bottom: max(1rem, env(safe-area-inset-bottom));
   }
 }
+
+/* ===== FIX: Container centering on mobile ===== */
+.container {
+  width: calc(100% - 3rem); /* accounts for 1.5rem on each side */
+  margin-inline: auto;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  max-width: 100%;
+}
+
