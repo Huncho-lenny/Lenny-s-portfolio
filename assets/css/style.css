@@ -1,4 +1,21 @@
+/*=============== PERFORMANCE OPTIMIZATIONS ===============*/
+.home__blob,
+.about__blob {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.projects__img {
+  content-visibility: auto;
+}
+
+/* Optimize images */
+img {
+  content-visibility: auto;
+}
+
 /*=============== DESKTOP/WEB UI ===============*/
+
 /* Mobile UI is in mobile.css */
 
 /*=============== LOADING ANIMATION ===============*/

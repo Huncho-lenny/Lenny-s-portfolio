@@ -4,6 +4,10 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+      <!--=============== PRECONNECT TO CDNs ===============-->
+      <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+      <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
       <!--=============== FAVICON ===============-->
       <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
@@ -14,9 +18,11 @@
       <link rel="stylesheet" href="assets/css/style.css">
 
       <!--=============== MOBILE CSS (only loads on ≤768px) ===============-->
-      <link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 768px)">
+      <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="(max-width: 768px)">
+      <noscript><link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 768px)"></noscript>
 
-      <title>Lenny - Web Developer Portfolio</title>
+      <title>Lenny Kimanthi | Web Developer & Designer - LK Labs</title>
+      <meta name="description" content="Full-stack web developer specializing in modern websites, web applications, and graphic design. Based in Nairobi, Kenya.">
    </head>
    <body>
       <!--==================== LOADING ANIMATION ====================-->
@@ -31,7 +37,7 @@
       <header class="header" id="header">
          <nav class="nav container">
             <a href="#" class="nav__logo">
-               <img src="assets/img/logo.png" alt="logo" class="nav__logo-img">
+               <img src="assets/img/logo.png" alt="LK Labs Logo" class="nav__logo-img" width="35" height="35">
                <span>LK.Labs</span>
             </a>
 
@@ -101,23 +107,23 @@
                   </div>
 
                   <div class="home__social">
-                     <a href="https://github.com/Huncho-lenny" target="_blank" class="home__social-link">
+                     <a href="https://github.com/Huncho-lenny" target="_blank" rel="noopener" class="home__social-link" aria-label="GitHub">
                         <i class="ri-github-line"></i>
                      </a>
-                     <a href="https://www.linkedin.com/in/lenny-kimanthi-00085239b/" target="_blank" class="home__social-link">
+                     <a href="https://www.linkedin.com/in/lenny-kimanthi-00085239b/" target="_blank" rel="noopener" class="home__social-link" aria-label="LinkedIn">
                         <i class="ri-linkedin-box-line"></i>
                      </a>
-                     <a href="https://x.com/KimanthiLenny" target="_blank" class="home__social-link">
+                     <a href="https://x.com/KimanthiLenny" target="_blank" rel="noopener" class="home__social-link" aria-label="Twitter">
                         <i class="ri-twitter-x-line"></i>
                      </a>
-                     <a href="https://www.instagram.com/yb.l3nn/?hl=en" target="_blank" class="home__social-link">
+                     <a href="https://www.instagram.com/yb.l3nn/?hl=en" target="_blank" rel="noopener" class="home__social-link" aria-label="Instagram">
                         <i class="ri-instagram-line"></i>
                      </a>
                   </div>
                </div>
 
                <div class="home__image">
-                  <svg class="home__blob" viewBox="0 0 550 591" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="home__blob" viewBox="0 0 550 591" xmlns="http://www.w3.org/2000/svg" aria-label="Profile photo">
                      <mask id="maskBlob" mask-type="alpha">
                         <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
                         170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
@@ -126,14 +132,12 @@
                         438.894V191.606C36.843 183.032 41.4174 175.109 48.843 170.822L263 47.1782Z"/>
                      </mask>
                      <g mask="url(#maskBlob)">
-                        <!-- Blue hexagon background -->
                         <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
                         170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
                         447.468 508.583 455.391 501.157 459.678L287 583.322C279.574 587.609 270.426 
                         587.609 263 583.322L48.843 459.678C41.4174 455.391 36.843 447.468 36.843 
                         438.894V191.606C36.843 183.032 41.4174 175.109 48.843 170.822L263 47.1782Z" 
                         fill="var(--first-color)"/>
-                        <!-- Photo scaled to fully fit inside the hexagon -->
                         <image 
                            href="assets/img/profile.png"
                            x="0"
@@ -141,6 +145,7 @@
                            width="550"
                            height="750"
                            preserveAspectRatio="xMidYMid slice"
+                           loading="eager"
                         />
                      </g>
                   </svg>
@@ -165,9 +170,8 @@
                </div>
 
                <div class="about__image">
-                  <svg class="about__blob" viewBox="0 0 550 592" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="about__blob" viewBox="0 0 550 592" xmlns="http://www.w3.org/2000/svg" aria-label="About photo">
                      <mask id="maskAbout" mask-type="alpha">
-                        <!-- Mask shape must be white so content shows -->
                         <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
                         170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
                         447.468 508.583 455.391 501.157 459.678L287 583.322C279.574 587.609 270.426 
@@ -176,21 +180,20 @@
                         fill="white"/>
                      </mask>
                      <g mask="url(#maskAbout)">
-                        <!-- Blue hexagon background -->
                         <path d="M263 47.1782C270.426 42.891 279.574 42.891 287 47.1782L501.157 
                         170.822C508.583 175.109 513.157 183.032 513.157 191.606V438.894C513.157 
                         447.468 508.583 455.391 501.157 459.678L287 583.322C279.574 587.609 270.426 
                         587.609 263 583.322L48.843 459.678C41.4174 455.391 36.843 447.468 36.843 
                         438.894V191.606C36.843 183.032 41.4174 175.109 48.843 170.822L263 47.1782Z" 
                         fill="var(--first-color)"/>
-                        <!-- About photo (gray suit) further zoomed out for a more relaxed fit -->
                         <image 
-                           href="assets/img/about-me.png"
+                           href="assets/img/about-me.jpg"
                            x="35"
                            y="-5"
                            width="480"
                            height="690"
                            preserveAspectRatio="xMidYMid slice"
+                           loading="lazy"
                         />
                      </g>
                   </svg>
@@ -242,7 +245,7 @@
                            <span class="tech__tag">Tailwind CSS</span>
                         </div>
                         <div class="projects__buttons">
-                           <a href="https://github.com/Huncho-lenny/social-vault" target="_blank" class="projects__link">
+                           <a href="https://github.com/Huncho-lenny/social-vault" target="_blank" rel="noopener" class="projects__link">
                               <i class="ri-github-line"></i> View Repository
                            </a>
                         </div>
@@ -255,7 +258,7 @@
                   <!-- Cocktail Finder -->
                   <article class="projects__card">
                      <div class="projects__image">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500" alt="cocktail finder" class="projects__img">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500" alt="cocktail finder" class="projects__img" loading="lazy" width="500" height="200">
                         <span class="projects__badge">Solo Project</span>
                      </div>
                      <div class="projects__content">
@@ -271,10 +274,10 @@
                         </div>
                      </div>
                      <div class="projects__buttons">
-                        <a href="https://github.com/Huncho-lenny/cocktail-finder-app" target="_blank" class="projects__link">
+                        <a href="https://github.com/Huncho-lenny/cocktail-finder-app" target="_blank" rel="noopener" class="projects__link">
                            <i class="ri-github-line"></i> GitHub
                         </a>
-                        <a href="https://cocktail-finder-app.vercel.app" target="_blank" class="projects__link">
+                        <a href="https://cocktail-finder-app.vercel.app" target="_blank" rel="noopener" class="projects__link">
                            <i class="ri-external-link-line"></i> Live Demo
                         </a>
                      </div>
@@ -283,7 +286,7 @@
                   <!-- Taste Town -->
                   <article class="projects__card">
                      <div class="projects__image">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="taste town" class="projects__img">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="taste town" class="projects__img" loading="lazy" width="500" height="200">
                         <span class="projects__badge">Team Project</span>
                      </div>
                      <div class="projects__content">
@@ -300,10 +303,10 @@
                         </div>
                      </div>
                      <div class="projects__buttons">
-                        <a href="https://github.com/Richard3wasonga/Taste-Town/tree/Huncho-lenny-patch-1" target="_blank" class="projects__link">
+                        <a href="https://github.com/Richard3wasonga/Taste-Town/tree/Huncho-lenny-patch-1" target="_blank" rel="noopener" class="projects__link">
                            <i class="ri-github-line"></i> GitHub
                         </a>
-                        <a href="https://taste-town-five.vercel.app/" target="_blank" class="projects__link">
+                        <a href="https://taste-town-five.vercel.app/" target="_blank" rel="noopener" class="projects__link">
                            <i class="ri-external-link-line"></i> Live Demo
                         </a>
                      </div>
@@ -320,14 +323,14 @@
                      </div>
                      <div class="demo__interactive">
                         <div class="weather__input">
-                           <input type="text" id="cityInput" placeholder="Enter city name...">
+                           <input type="text" id="cityInput" placeholder="Enter city name..." aria-label="City name">
                            <button id="weatherBtn">Search</button>
                         </div>
                         <div id="weatherResult" class="weather__result">
                            <p>Enter a city to see the weather</p>
                         </div>
                      </div>
-                     <p class="projects__description">Real-time weather data using OpenWeatherMap API</p>
+                     <p class="projects__description">Real-time weather data using Open-Meteo API</p>
                   </div>
 
                   <!-- Todo List Demo -->
@@ -337,7 +340,7 @@
                      </div>
                      <div class="demo__interactive">
                         <div class="todo__input">
-                           <input type="text" id="todoInput" placeholder="Add a new task...">
+                           <input type="text" id="todoInput" placeholder="Add a new task..." aria-label="New task">
                            <button id="addTodoBtn">Add</button>
                         </div>
                         <div id="todoList" class="todo__list"></div>
@@ -370,7 +373,7 @@
                      <h3 class="resume__subtitle">Computer Science</h3>
                      <span class="resume__date">2025 - 2026</span>
                      <p class="resume__description">
-                        Certificate in sotware engineering with focus on web development and software engineering.
+                        Certificate in software engineering with focus on web development and software engineering.
                      </p>
                   </div>
                </div>
@@ -449,7 +452,7 @@
                         <i class="ri-whatsapp-line contact__card-icon"></i>
                         <h3 class="contact__card-title">WhatsApp</h3>
                         <span class="contact__card-data">+254 708 860 046</span>
-                        <a href="https://wa.me/254708860046" target="_blank" class="contact__button">
+                        <a href="https://wa.me/254708860046" target="_blank" rel="noopener" class="contact__button">
                            Write me <i class="ri-arrow-right-line"></i>
                         </a>
                      </div>
@@ -458,7 +461,7 @@
                         <i class="ri-telegram-line contact__card-icon"></i>
                         <h3 class="contact__card-title">Telegram</h3>
                         <span class="contact__card-data">@ybl3nn</span>
-                        <a href="https://t.me/ybl3nn" target="_blank" class="contact__button">
+                        <a href="https://t.me/ybl3nn" target="_blank" rel="noopener" class="contact__button">
                            Write me <i class="ri-arrow-right-line"></i>
                         </a>
                      </div>
@@ -497,49 +500,49 @@
       <footer class="footer">
          <div class="footer__container container grid">
             <div>
-               <h1 class="footer__title">Lenny</h1>
-               <h2 class="footer__education">Web Developer</h2>
+               <h1 class="footer__title">LK Labs</h1>
+               <h2 class="footer__education">Web Developer & Designer</h2>
             </div>
 
             <div class="footer__social">
-               <a href="https://www.linkedin.com/in/lenny-kimanthi-00085239b/" target="_blank" class="footer__social-link">
+               <a href="https://www.linkedin.com/in/lenny-kimanthi-00085239b/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
                   <i class="ri-linkedin-box-line"></i>
                </a>
-               <a href="https://github.com/Huncho-lenny" target="_blank" class="footer__social-link">
+               <a href="https://github.com/Huncho-lenny" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
                   <i class="ri-github-line"></i>
                </a>
-               <a href="https://x.com/KimanthiLenny" target="_blank" class="footer__social-link">
+               <a href="https://x.com/KimanthiLenny" target="_blank" rel="noopener" class="footer__social-link" aria-label="Twitter">
                   <i class="ri-twitter-x-line"></i>
                </a>
-               <a href="https://www.instagram.com/yb.l3nn/?hl=en" target="_blank" class="footer__social-link">
+               <a href="https://www.instagram.com/yb.l3nn/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
                   <i class="ri-instagram-line"></i>
                </a>
             </div>
 
             <span class="footer__copy">
-               &#169; Copyright Lenny. All rights reserved
+               &#169; 2025 LK Labs. All rights reserved
             </span>
          </div>
       </footer>
 
       <!--========== SCROLL UP ==========-->
-      <a href="#" class="scrollup" id="scroll-up">
+      <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
          <i class="ri-arrow-up-line"></i>
       </a>
 
       <!--========== COPY NOTIFICATION ==========-->
-      <div class="copy__notification" id="copyNotification">
+      <div class="copy__notification" id="copyNotification" aria-live="polite">
          Copied to clipboard!
       </div>
 
       <!--=============== SCROLLREVEAL ===============-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
 
       <!--=============== TYPED JS ===============-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.min.js"></script>
 
       <!--=============== EMAIL JS ===============-->
-      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script>
@@ -550,8 +553,8 @@
       </script>
       <script defer src="/_vercel/speed-insights/script.js"></script>
 
-      <!--===============  VERCEL ANALYTICS ===============-->
-      <script src="/_vercel/analytics/script.js"></script>
+      <!--=============== VERCEL ANALYTICS ===============-->
+      <script defer src="/_vercel/analytics/script.js"></script>
       
    </body>
 </html>
