@@ -64,9 +64,6 @@ img {
   transition: width 0.1s ease;
 }
 
-/*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
-
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
