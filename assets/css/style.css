@@ -198,8 +198,8 @@ img {
   object-fit: cover;
 }
 
-/* Smooth transitions for all elements */
-* {
+/* Smooth transitions for interactive elements only */
+.button, .nav__link, .home__social-link, .projects__card, .footer__social-link {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
