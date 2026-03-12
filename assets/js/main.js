@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
          }
    
          if (typeof emailjs !== 'undefined') {
-            emailjs.send('service_u3g8koq', 'template_hhwkqak', {
+            emailjs.send('service_b92ops9', 'template_hhwkqak', {
                from_name: name,
                from_email: email,
                message: project,
