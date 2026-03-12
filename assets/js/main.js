@@ -21,7 +21,51 @@ document.addEventListener('DOMContentLoaded', function() {
       const scrollPercentage = (scrollTop / scrollHeight) * 100
       scrollProgressEl.style.width = scrollPercentage + '%'
    }
-   window.addEventListener('scroll', scrollProgress)
+   
+   /*=============== ADD SHADOW HEADER ===============*/
+   const shadowHeader = () =>{
+      const header = document.getElementById('header')
+      window.scrollY >= 50 ? header.classList.add('shadow-header') 
+                         : header.classList.remove('shadow-header')
+   }
+   
+   /*=============== SHOW SCROLL UP ===============*/ 
+   const scrollUp = () =>{
+      const scrollUpEl = document.getElementById('scroll-up')
+      if (!scrollUpEl) return
+      window.scrollY >= 350 ? scrollUpEl.classList.add('show-scroll')
+                          : scrollUpEl.classList.remove('show-scroll')
+   }
+   
+   /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+   const sections = document.querySelectorAll('section[id]')
+       
+   const scrollActive = () =>{
+      const scrollDown = window.scrollY
+   
+      sections.forEach(current =>{
+         const sectionHeight = current.offsetHeight,
+               sectionTop = current.offsetTop - 58,
+               sectionId = current.getAttribute('id'),
+               sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+   
+         if(sectionsClass) {
+            if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
+               sectionsClass.classList.add('active-link')
+            }else{
+               sectionsClass.classList.remove('active-link')
+            }
+         }
+      })
+   }
+   
+   /*=============== COMBINED SCROLL LISTENER ===============*/
+   window.addEventListener('scroll', () => {
+      scrollProgress()
+      shadowHeader()
+      scrollUp()
+      scrollActive()
+   })
    
    /*=============== COPY EMAIL ===============*/
    const copyEmailBtn = document.querySelector('.copy-email')
@@ -118,14 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
       })
    }
    
-   /*=============== ADD SHADOW HEADER ===============*/
-   const shadowHeader = () =>{
-      const header = document.getElementById('header')
-      window.scrollY >= 50 ? header.classList.add('shadow-header') 
-                         : header.classList.remove('shadow-header')
-   }
-   window.addEventListener('scroll', shadowHeader)
-   
    /*=============== CONTACT EMAIL JS ===============*/ 
    if (typeof emailjs !== 'undefined') {
       emailjs.init('17yyaINKakMHwyrRl');
@@ -184,38 +220,6 @@ document.addEventListener('DOMContentLoaded', function() {
    
       contactForm.addEventListener('submit', sendEmail)
    }
-   
-   /*=============== SHOW SCROLL UP ===============*/ 
-   const scrollUp = () =>{
-      const scrollUpEl = document.getElementById('scroll-up')
-      if (!scrollUpEl) return
-      window.scrollY >= 350 ? scrollUpEl.classList.add('show-scroll')
-                          : scrollUpEl.classList.remove('show-scroll')
-   }
-   window.addEventListener('scroll', scrollUp) 
-   
-   /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-   const sections = document.querySelectorAll('section[id]')
-       
-   const scrollActive = () =>{
-      const scrollDown = window.scrollY
-   
-      sections.forEach(current =>{
-         const sectionHeight = current.offsetHeight,
-               sectionTop = current.offsetTop - 58,
-               sectionId = current.getAttribute('id'),
-               sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
-   
-         if(sectionsClass) {
-            if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
-               sectionsClass.classList.add('active-link')
-            }else{
-               sectionsClass.classList.remove('active-link')
-            }
-         }
-      })
-   }
-   window.addEventListener('scroll', scrollActive)
    
    /*=============== SCROLL REVEAL ANIMATION ===============*/
    if (typeof ScrollReveal !== 'undefined') {
