@@ -293,7 +293,9 @@ p, span, h1, h2, h3, h4, h5, h6 {
     width: 100%;
     padding-block: 1.8rem 5rem;
     text-align: center;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
+    -webkit-overflow-scrolling: touch;
     transition: top .4s;
   }
 }
@@ -435,6 +437,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
   padding: .5rem;
   color: var(--white-color);
   font-size: 1.5rem;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   transition: transform .4s ease;
   will-change: transform;
@@ -855,6 +858,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .color__box {
+  height: 100px; /* fallback */
   aspect-ratio: 1;
   border-radius: 0.5rem;
   display: flex;
@@ -1211,6 +1215,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
   padding: .5rem;
   color: var(--white-color);
   font-size: 1.5rem;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   transition: transform .4s;
 }
@@ -1226,6 +1231,12 @@ p, span, h1, h2, h3, h4, h5, h6 {
 
 
 /*=============== SCROLL BAR ===============*/
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--hue), 8%, 54%) hsl(var(--hue), 8%, 66%);
+}
+
 ::-webkit-scrollbar {
   width: .6rem;
   border-radius: .5rem;
@@ -1246,7 +1257,8 @@ p, span, h1, h2, h3, h4, h5, h6 {
 .scrollup {
   position: fixed;
   right: 1rem;
-  bottom: -50%;
+  bottom: 1rem; /* fallback */
+  bottom: max(1rem, env(safe-area-inset-bottom));
   background-color: var(--black-color);
   display: inline-flex;
   padding: 8px;

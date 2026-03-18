@@ -64,6 +64,8 @@ Desktop/web UI is in style.css
   z-index: 200 !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 /* Menu open: slide in from right */
@@ -126,6 +128,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .home__image {
@@ -324,6 +328,7 @@ body.menu-open {
 }
 
 .color__box {
+  height: 100px; /* fallback */
   aspect-ratio: 1;
   padding: 0.5rem;
 }
@@ -434,6 +439,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .footer__copy {
@@ -444,6 +451,7 @@ body.menu-open {
 .scrollup {
   min-width: 48px;
   min-height: 48px;
+  bottom: 1rem; /* fallback */
   bottom: max(1rem, env(safe-area-inset-bottom));
   right: 1rem;
   font-size: 1.25rem;
