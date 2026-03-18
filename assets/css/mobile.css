@@ -4,6 +4,26 @@ This file is loaded only on mobile devices and small tablets.
 Desktop/web UI is in style.css
 */
 
+/*=============== ACCESSIBILITY & MOBILE INTERACTIONS ===============*/
+:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 4px;
+}
+
+.button:active,
+.nav__link:active,
+.home__social-link:active,
+.footer__social-link:active,
+.projects__link:active,
+.contact__button:active {
+  transform: scale(0.97);
+}
+
+.nav__toggle:active,
+.nav__close:active {
+  transform: scale(0.9);
+}
+
 /*=============== BASE MOBILE ADJUSTMENTS ===============*/
 .container {
   margin-inline: 0.75rem;
@@ -71,6 +91,23 @@ Desktop/web UI is in style.css
 /* Menu open: slide in from right */
 .nav__menu.show-menu {
   right: 0 !important;
+  top: 0 !important; /* ensure this overrides desktop top-based toggle */
+}
+
+/* Overlay when menu is open */
+.nav__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 199;
+}
+
+.nav__overlay.show {
+  display: block;
 }
 
 /* Prevent page scroll when menu is open */

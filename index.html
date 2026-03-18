@@ -57,6 +57,9 @@
       </script>
    </head>
    <body>
+      <!--==================== SKIP LINK FOR ACCESSIBILITY ====================-->
+      <a href="#main" class="skip-link">Skip to main content</a>
+
       <!--==================== LOADING ANIMATION ====================-->
       <div class="loading" id="loading">
          <div class="loading__spinner"></div>
@@ -120,7 +123,7 @@
       </header>
 
       <!--==================== MAIN ====================-->
-      <main class="main">
+      <main class="main" id="main">
          <!--==================== HOME ====================-->
          <section class="home section" id="home">
             <div class="home__container container grid">
@@ -178,6 +181,7 @@
                            height="750"
                            preserveAspectRatio="xMidYMid slice"
                            loading="eager"
+                           alt="Lenny Kimanthi - Web Developer Profile Photo"
                         />
                      </g>
                   </svg>
@@ -226,6 +230,7 @@
                            height="690"
                            preserveAspectRatio="xMidYMid slice"
                            loading="lazy"
+                           alt="Lenny Kimanthi - About Me Photo"
                         />
                      </g>
                   </svg>
@@ -290,7 +295,7 @@
                   <!-- Cocktail Finder -->
                   <article class="projects__card">
                      <div class="projects__image">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500" alt="cocktail finder" class="projects__img" loading="lazy" width="500" height="200">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500" alt="Cocktail Finder App - Interactive cocktail recipe browser with search functionality" class="projects__img" loading="lazy" width="500" height="200">
                         <span class="projects__badge">Solo Project</span>
                      </div>
                      <div class="projects__content">
@@ -318,7 +323,7 @@
                   <!-- Taste Town -->
                   <article class="projects__card">
                      <div class="projects__image">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="taste town" class="projects__img" loading="lazy" width="500" height="200">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="Taste Town E-commerce - Online supermarket with product catalog and admin panel" class="projects__img" loading="lazy" width="500" height="200">
                         <span class="projects__badge">Team Project</span>
                      </div>
                      <div class="projects__content">
@@ -590,6 +595,9 @@
 
       <!--=============== VERCEL INSIGHTS ===============-->
       <script defer src="/_vercel/insights/script.js"></script>
+      
+      <!--=============== MOBILE MENU OVERLAY ===============-->
+      <div class="nav__overlay" id="nav-overlay"></div>
       
    </body>
 </html>

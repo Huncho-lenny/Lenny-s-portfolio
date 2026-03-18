@@ -118,11 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
    const navToggle = document.getElementById('nav-toggle')
    const navClose = document.getElementById('nav-close')
    const navLinks = document.querySelectorAll('.nav__link')
+   const navOverlay = document.getElementById('nav-overlay')
 
    function openMenu() {
       if (navMenu) {
          navMenu.classList.add('show-menu')
          document.body.classList.add('menu-open')
+         if (navOverlay) navOverlay.classList.add('show')
+         // Focus first menu item for keyboard users
+         const firstLink = navMenu.querySelector('.nav__link')
+         if (firstLink) firstLink.focus()
       }
    }
 
@@ -130,21 +135,53 @@ document.addEventListener('DOMContentLoaded', function() {
       if (navMenu) {
          navMenu.classList.remove('show-menu')
          document.body.classList.remove('menu-open')
+         if (navOverlay) navOverlay.classList.remove('show')
+         // Return focus to toggle button
+         if (navToggle) navToggle.focus()
       }
    }
 
    function toggleMenu() {
       if (!navMenu) return
-      navMenu.classList.toggle('show-menu')
-      document.body.classList.toggle('menu-open', navMenu.classList.contains('show-menu'))
+      if (navMenu.classList.contains('show-menu')) {
+         closeMenu()
+      } else {
+         openMenu()
+      }
+   }
+
+   // Keyboard navigation for menu
+   if (navMenu) {
+      navMenu.addEventListener('keydown', (e) => {
+         if (e.key === 'Escape') {
+            closeMenu()
+         }
+      })
+   }
+
+   // Close menu when clicking overlay
+   if (navOverlay) {
+      navOverlay.addEventListener('click', closeMenu)
    }
 
    if (navToggle) {
       navToggle.addEventListener('click', toggleMenu)
+      navToggle.addEventListener('keydown', (e) => {
+         if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            toggleMenu()
+         }
+      })
    }
 
    if (navClose) {
       navClose.addEventListener('click', closeMenu)
+      navClose.addEventListener('keydown', (e) => {
+         if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            closeMenu()
+         }
+      })
    }
 
    navLinks.forEach(link => {

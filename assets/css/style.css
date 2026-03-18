@@ -1,3 +1,81 @@
+/*=============== ACCESSIBILITY & FOCUS STYLES ===============*/
+:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced focus for interactive elements */
+.button:focus-visible,
+.nav__link:focus-visible,
+.home__social-link:focus-visible,
+.footer__social-link:focus-visible,
+.projects__link:focus-visible,
+.contact__button:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 4px;
+}
+
+/* Form focus styles */
+.contact__form-input:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 2px;
+  border-color: var(--first-color);
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--first-color);
+  color: var(--black-color);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/*=============== MOBILE FEEL & ACTIVE STATES ===============*/
+.button:active {
+  transform: scale(0.97);
+}
+
+.nav__link:active,
+.home__social-link:active,
+.footer__social-link:active,
+.projects__link:active {
+  transform: scale(0.95);
+}
+
+.nav__toggle:active,
+.nav__close:active {
+  transform: scale(0.9);
+}
+
+/* Enhanced button interactions */
+.contact__button:active,
+.projects__button:active {
+  transform: scale(0.97);
+}
+
+/* Demo interactive elements */
+#weatherBtn:active,
+#addTodoBtn:active,
+#generateColorsBtn:active {
+  transform: scale(0.97);
+}
+
 /*=============== PERFORMANCE OPTIMIZATIONS ===============*/
 .home__blob,
 .about__blob {
@@ -88,7 +166,7 @@ img {
   --first-color-alt: hsl(var(--hue), 80%, 44%);
   --white-color: hsl(var(--hue), 8%, 92%);
   --black-color: hsl(var(--hue), 4%, 8%);
-  --gray-color: hsl(var(--hue), 4%, 50%);
+  --gray-color: hsl(var(--hue), 4%, 65%); /* Improved contrast from 50% to 65% */
   --body-color: hsl(var(--hue), 8%, 8%);
   --container-color: hsl(var(--hue), 8%, 12%);
 
@@ -1018,8 +1096,8 @@ p, span, h1, h2, h3, h4, h5, h6 {
   color: var(--white-color);
 }
 
-.contact__input::placeholder {
-  color: var(--gray-color);
+.contact__form-input::placeholder {
+  color: hsl(var(--hue), 4%, 65%); /* Better contrast for placeholders */
 }
 
 .contact__form-area {

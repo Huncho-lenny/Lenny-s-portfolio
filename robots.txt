@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lenny-s-portfolio.vercel.app/sitemap.xml
+
+# Block access to sensitive files
+Disallow: /assets/js/
+Disallow: /*.json$
+Disallow: /vercel.json
+
+# Allow important assets
+Allow: /assets/css/
+Allow: /assets/img/
+Allow: /assets/pdf/
