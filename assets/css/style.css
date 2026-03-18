@@ -365,16 +365,19 @@ p, span, h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 1150px) {
   .nav__menu {
     position: fixed;
-    top: -100%;
-    left: 0;
-    background-color: hsla(var(--hue), 70%, 4%, .2);
-    width: 100%;
+    top: 0;
+    right: -100%;
+    left: auto;
+    background-color: var(--container-color);
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
     padding-block: 1.8rem 5rem;
     text-align: center;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     -webkit-overflow-scrolling: touch;
-    transition: top .4s;
+    transition: right 0.3s ease;
   }
 }
 

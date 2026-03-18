@@ -88,10 +88,10 @@ Desktop/web UI is in style.css
   backdrop-filter: blur(8px);
 }
 
-/* Menu open: slide in from right */
+/* Override desktop show-menu which uses top */
 .nav__menu.show-menu {
   right: 0 !important;
-  top: 0 !important; /* ensure this overrides desktop top-based toggle */
+  top: 0 !important;
 }
 
 /* Overlay when menu is open */
@@ -297,6 +297,27 @@ body.menu-open {
 
 .highlight__item i {
   font-size: 1rem;
+}
+
+/* Fix demo cards overflow on mobile */
+.projects__container.container {
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.demo__card {
+  width: 100% !important;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 1.25rem !important;
+}
+
+.demo__card p.projects__description {
+  white-space: normal;
+  overflow: visible;
+  padding-left: 0;
 }
 
 /*=============== INTERACTIVE DEMOS ===============*/
@@ -541,6 +562,146 @@ body.menu-open {
   }
 }
 
+/*=============== TABLETS (768px - 1024px) ===============*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding-inline: 2rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home__container,
+  .about__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .home__blob,
+  .about__blob {
+    width: 300px;
+    height: 300px;
+  }
+
+  .home__image,
+  .about__image {
+    width: 300px;
+  }
+
+  .projects__container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem;
+  }
+
+  .demo__card {
+    padding: 1.5rem;
+  }
+
+  .resume__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .contact__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .featured__project {
+    padding: 1.5rem;
+  }
+
+  .nav__menu {
+    width: 60% !important;
+    max-width: 400px !important;
+  }
+}
+
+/*=============== LARGE TABLETS / SMALL LAPTOPS (1024px - 1150px) ===============*/
+@media screen and (min-width: 1024px) and (max-width: 1150px) {
+  .container {
+    padding-inline: 2.5rem;
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  .home__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .projects__container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem;
+  }
+
+  .resume__container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .nav__menu {
+    width: 50% !important;
+    max-width: 350px !important;
+  }
+}
+
+/*=============== IPAD PRO / LARGE TABLETS (portrait) ===============*/
+@media screen and (min-width: 1024px) and (max-width: 1150px) and (orientation: portrait) {
+  .home__container,
+  .about__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .home__data,
+  .about__data {
+    text-align: center;
+  }
+
+  .home__image,
+  .about__image {
+    justify-self: center;
+  }
+}
+
+/*=============== LANDSCAPE MOBILE (phones turned sideways) ===============*/
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .home {
+    min-height: auto;
+    padding-block: 5rem 2rem;
+  }
+
+  .home__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .home__blob,
+  .about__blob {
+    width: 200px;
+    height: 200px;
+  }
+
+  .home__image,
+  .about__image {
+    width: 200px;
+    order: 0;
+  }
+
+  .section {
+    padding-block: 4rem 1rem;
+  }
+}
+
 /*=============== SAFE AREAS (iPhone notch, etc) ===============*/
 @supports (padding: max(0px)) {
   .header {
@@ -554,10 +715,10 @@ body.menu-open {
 
 /* ===== FIX: Container centering on mobile ===== */
 .container {
-  width: calc(100% - 3rem); /* accounts for 1.5rem on each side */
-  margin-inline: auto;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  width: 100%;
   max-width: 100%;
+  margin-inline: 0;
+  padding-inline: 1rem;
+  box-sizing: border-box;
 }
 
